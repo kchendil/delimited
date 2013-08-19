@@ -40,13 +40,21 @@ end
 
 execute "Download Advanced Driver set commond package" do
  user "root" 
- command "mkdir -p /tmp/plugins; cd /tmp/plugins; wget http://blr-builder.labs.blr.novell.com/artifacts/designer_updatesite2/4.0/Publish2/plugins/NOVLACOMSET_2.1.0.20130702145909.jar"
+ command "mkdir -p /tmp/plugins; cd /tmp/plugins; wget http://164.99.90.247/artifacts/designer_updatesite2/4.0/Publish2/plugins/NOVLACOMSET_2.1.0.20130702145909.jar"
   action :run
 end
 
+
+execute "Download Delimited Text Driver Base package" do
+ user "root" 
+ command "cd /tmp/plugins; wget http://164.99.90.247/artifacts/designer_updatesite2/4.0/Publish2/plugins/NOVLDTXTBASE_2.1.0.20130801170531.jar"
+  action :run
+end
+
+
 execute "Download Jade Entitlement package" do
  user "root" 
- command "cd /tmp/plugins; wget http://blr-builder.labs.blr.novell.com/artifacts/designer_updatesite2/4.0/Publish2/plugins/NOVLDTXTENT_2.1.0.20130702145814.jar"
+ command "cd /tmp/plugins; wget http://164.99.90.247/artifacts/designer_updatesite2/4.0/Publish2/plugins/NOVLDTXTENT_2.1.0.20130801170845.jar"
   action :run
 end
 

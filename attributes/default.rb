@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: tomcat_latest
+# Cookbook Name:: delimited
 # Attributes:: default
 #
 # Copyright 2013, Chendil Kumar Manoharan
@@ -16,30 +16,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-default['tomcat_latest']['tomcat_url_7'] = "http://tomcat.apache.org/download-70.cgi"
-default['tomcat_latest']['tomcat_url_6'] = "http://tomcat.apache.org/download-60.cgi"
-default['tomcat_latest']['tomcat_install_loc'] = "/tmp/apache"
-default['tomcat_latest']['tomcat_version'] = '7'
-default["tomcat_latest"]["port"] = 8080
-default["tomcat_latest"]["ssl_port"] = 8443
-default["tomcat_latest"]["ajp_port"] = 8009
-default["tomcat_latest"]["java_options"] = "-Xmx128M"
-default["tomcat_latest"]["use_security_manager"] = false
-default["tomcat_latest"]["authbind"] = "no"
-default['tomcat_latest']['direct_download_version'] = "na"
-default['tomcat_latest']['tomcat_user'] = "root"
-default['tomcat_latest']['auto_start'] = "true"
 
-case platform
-when "suse"
- default["tomcat_latest"]["user"] = "vagrant"
-default["tomcat_latest"]["group"] = "vagrant"
-default["tomcat_latest"]["home"] = "#{tomcat_latest["tomcat_install_loc"]}/tomcat6/apache-tomcat-6.0.36"
-default["tomcat_latest"]["base"] = "#{tomcat_latest["tomcat_install_loc"]}/tomcat6/apache-tomcat-6.0.36"
-default["tomcat_latest"]["config_dir"] = "#{tomcat_latest["tomcat_install_loc"]}/tomcat6/apache-tomcat-6.0.36/conf"
-default["tomcat_latest"]["log_dir"] = "#{tomcat_latest["tomcat_install_loc"]}/tomcat6/apache-tomcat-6.0.36/logs"
-default["tomcat_latest"]["tmp_dir"] = "#{tomcat_latest["tomcat_install_loc"]}/tomcat6/apache-tomcat-6.0.36/temp"
-default["tomcat_latest"]["work_dir"] = "#{tomcat_latest["tomcat_install_loc"]}/tomcat6/apache-tomcat-6.0.36/work"
-default["tomcat_latest"]["context_dir"] = "#{tomcat_latest["config_dir"]}/Catalina/localhost"
-default["tomcat_latest"]["webapp_dir"] = "#{tomcat_latest["tomcat_install_loc"]}/tomcat6/apache-tomcat-6.0.36/webapps"
-end
+default['delimited']['driver_shim_zip_url'] = "http://164.99.86.253/publish/Builds/IDM/dorado_sp2_patch3/Drivers/dirxml_flatfile/20130625/dirxmlflatfilefp.zip"
+default['delimited']['ulimit'] = "4096"
+default['delimited']['admin_name']="admin.servers.system"
+default['delimited']['edirectory_port']="524"
+default['delimited']['idm_password']="n"
+default['delimited']['driverset']="driverset1.system"
+default['delimited']['driver_log_file']="/var/opt/novell/idm/delimited_configure.log"
+default['delimited']['driver_projectname']="IDM4_15"
+default['delimited']['jade_log_file']="/var/opt/novell/idm/delimited_entitlement.log"
+default['delimited']['jade_projectname']="IDM4_16"
+default['delimited']['driver_op_commands']="stop"
+default['delimited']['jade_extra_opencsv_url']="http://164.99.178.154/Jade_for_vagrant/opencsv-2.1.jar"
+default['delimited']['jade_extra_initidm_url']="http://164.99.178.154/Jade_for_vagrant/init-idm-resources.jar"
+default['delimited']['jade_base_pkg_url']="http://blr-builder.labs.blr.novell.com/artifacts/designer_updatesite2/4.0/Publish2/plugins/NOVLDTXTBASE_2.1.0.20130801170531.jar"
+default['delimited']['jade_entit_pkg_url']="http://blr-builder.labs.blr.novell.com/artifacts/designer_updatesite2/4.0/Publish2/plugins/NOVLDTXTENT_2.1.0.20130801170845.jar"
+default['delimited']['jade_adv_driverset_pkg_url']="http://blr-builder.labs.blr.novell.com/artifacts/designer_updatesite2/4.0/Publish2/plugins/NOVLACOMSET_2.1.0.20130702145909.jar"

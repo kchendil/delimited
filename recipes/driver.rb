@@ -25,16 +25,20 @@ end
 
 
 
-execute "Import the project" do
+execute "Create the input and output folders" do
  user "root" 
- command "/bin/sh -c 'ulimit -n 4096; LD_LIBRARY_PATH=/opt/novell/idm/Designer/plugins/com.novell.core.iconeditor_4.0.0.201206110753/os/linux:/opt/novell/idm/Designer/plugins/com.novell.core.jars_4.0.0.201206110753/os/linux/x86:/opt/novell/idm/Designer/plugins/com.novell.core.jars_4.0.0.201206110753/os/linux/gcc3:$LD_LIBRARY_PATH \"/opt/novell/idm/Designer//Designer\" -nosplash -nl en -application com.novell.idm.rcp.DesignerHeadless -command  importIDV -a \"admin.servers.system\" -w n -s 127.0.0.1:524 -c \"driverset1.system\" -u IDM4_14 -l \"/var/opt/novell/idm/import_idv.log\"  '" 
+ command "mkdir -p /var/novell/input; mkdir -p /var/novell/ouput" 
   action :run
 end
 
+template "/var/novell/input/ttpdemo.csv.bak" do
+  source "ttpdemo.csv.bak.erb"  
+  mode "0644"  
+end
 
 execute "Create Delimited Text Driver" do
  user "root" 
- command "/bin/sh -c 'ulimit -n 4096; LD_LIBRARY_PATH=/opt/novell/idm/Designer/plugins/com.novell.core.iconeditor_4.0.0.201206110753/os/linux:/opt/novell/idm/Designer/plugins/com.novell.core.jars_4.0.0.201206110753/os/linux/x86:/opt/novell/idm/Designer/plugins/com.novell.core.jars_4.0.0.201206110753/os/linux/gcc3:$LD_LIBRARY_PATH \"/opt/novell/idm/Designer//Designer\" -nosplash -nl en -application com.novell.idm.rcp.DesignerHeadless -command deployDriver -p \"/opt/novell/idm/Designer//packages/eclipse/plugins\":\"/tmp/plugins\" -a \"admin.servers.system\" -w n -s 127.0.0.1:524 -c \"driverset1.system\" -b NOVLDTXTBASE -l \"var/opt/novell/idm/delimited_configure.log\" -u IDM4_14 '" 
+ command "/bin/sh -c 'ulimit -n 4096; LD_LIBRARY_PATH=/opt/novell/idm/Designer/plugins/com.novell.core.iconeditor_4.0.0.201206110753/os/linux:/opt/novell/idm/Designer/plugins/com.novell.core.jars_4.0.0.201206110753/os/linux/x86:/opt/novell/idm/Designer/plugins/com.novell.core.jars_4.0.0.201206110753/os/linux/gcc3:$LD_LIBRARY_PATH \"/opt/novell/idm/Designer//Designer\" -nosplash -nl en -application com.novell.idm.rcp.DesignerHeadless -command deployDriver -p \"/opt/novell/idm/Designer//packages/eclipse/plugins\":\"/tmp/plugins\" -a \"admin.servers.system\" -w novell123$ -s 127.0.0.1:524 -c \"driverset1.system\" -b NOVLDTXTBASE -l \"/var/opt/novell/idm/delimited_configure.log\" -u IDM4_15 '" 
   action :run
 end
 
