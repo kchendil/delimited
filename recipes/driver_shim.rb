@@ -38,14 +38,14 @@ end
 execute "Install the rpm" do
  user "root" 
  command "rpm -Uvh /tmp/dirxmlflatfilefp/linux/novell-DXMLdelim.rpm" 
- not_if { ::File.exists?("/tmp/dirxmlflatfilefp/linux/novell-DXMLdelim.rpm")}
+ 
   action :run
 end
 
 execute "Restart ndsd " do
  user "root" 
  command "/etc/init.d/ndsd restart" 
- not_if { ::File.exists?("/tmp/dirxmlflatfilefp/linux/novell-DXMLdelim.rpm")}
+ 
   action :run
 end
 
